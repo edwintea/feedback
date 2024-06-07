@@ -5,4 +5,5 @@ from pydantic import BaseModel
 
 class Feedback(BaseModel):
     name: str
-    salary: int
+    email:str
+    rating: int
