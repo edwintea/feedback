@@ -30,9 +30,9 @@ def feedback_update(db: Session, post: UpdateFeedback):
 
 
 def feedback_delete(db: Session, post: DeleteFeedback):
-    feedback = db.query(Feedbacks).filter_by(email=post.email).all()
+    feedback = db.query(Feedbacks).filter_by(id=post.id).all()
     if not feedback:
         return DeleteFeedbackResponse(detail="Doesnt Exist")
-    db.query(Feedbacks).filter_by(email=post.email).delete()
+    db.query(Feedbacks).filter_by(id=post.id).delete()
     db.commit()
     return DeleteFeedbackResponse(detail="Feedback Deleted")

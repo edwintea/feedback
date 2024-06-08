@@ -33,7 +33,7 @@ class DeleteFeedbackResponse(BaseModel):
     detail: str
 
 class DeleteFeedback(BaseModel):
-    email:str
+    id:int
 
     class Config:
         orm_mode=True
