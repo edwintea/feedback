@@ -62,7 +62,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\":1,\r\n    \"email\":\"kubilk56@gmail.com\",\r\n    \"rating\":15\r\n}",
+					"raw": "{\r\n    \"id\":1,\r\n    \"email\":\"kubilk56@gmail.com\",\r\n    \"rating\":23\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -78,7 +78,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://127.0.0.1:8000/feedback/get/5"
+				"url": "http://127.0.0.1:8000/feedback/get/8"
 			},
 			"response": []
 		},
