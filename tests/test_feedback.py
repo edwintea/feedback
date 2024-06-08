@@ -67,10 +67,11 @@ def test_patch_feedback(request):
 )
 def test_delete_feedback(request):
     id = request.config.cache.get("feedback_id", None)
-    response = client.delete("/feedback/delete",
-        json={
-            "id":id
-        })
     #this comment is to keep the master sample data is still exist
+    #response = client.delete("/feedback/delete",
+    #    json={
+    #        "id":id
+    #    })
+    
     #assert response.status_code == status.HTTP_200_OK
     #assert response.json()["detail"] == "Feedback Deleted"
