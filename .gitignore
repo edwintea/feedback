@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 
 .idea
+
+#node module
+frontend/feedback/node_modules/
