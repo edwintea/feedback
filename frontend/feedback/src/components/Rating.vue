@@ -11,7 +11,7 @@
       @rating-selected ="setRating"
       >
     </star-rating>
-    <div>Very disatisfied <span style="margin-left:200px;">Very satisfied</span></div>
+    <div>Very disatisfied <span style="margin-left:260px;">Very satisfied</span></div>
     
   </div>
 </template>
