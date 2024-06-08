@@ -23,6 +23,13 @@ class Feedback(BaseModel):
 class DeleteFeedbackResponse(BaseModel):
     detail: str
 
+class DeleteFeedback(BaseModel):
+    email:str
+
+    class Config:
+        orm_mode=True
+        #from_attributes = True
+
 
 class UpdateFeedback(BaseModel):
     email:str

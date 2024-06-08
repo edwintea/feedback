@@ -17,6 +17,10 @@ It uses SQLAlchemy as the ORM.
 
 - Python 3.7+
 - Pip
+- PostgreSQL :
+    database : postgres
+    username : postgres
+    password : sa (depend on your local credential)
 - Other listed in requirements.txt
 
 ## Running

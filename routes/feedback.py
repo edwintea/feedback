@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from database.connection import get_db
-from schemas.models import DeleteFeedbackResponse, Feedback, UpdateFeedback
+from schemas.models import DeleteFeedbackResponse, Feedback, UpdateFeedback,DeleteFeedback
 from utils.feedback_crud import (
     feedback_create,
     feedback_delete,
@@ -31,11 +31,9 @@ def get_one_feedback(id, db: Session = Depends(get_db)):
     return feedback_get_one(db=db, id=id)
 
 
-@router.delete(
-    "/delete/{id}", status_code=status.HTTP_200_OK, response_model=DeleteFeedbackResponse
-)
-def delete_feedback(id, db: Session = Depends(get_db)):
-    delete_status = feedback_delete(db=db, id=id)
+@router.delete("/delete", status_code=status.HTTP_200_OK, response_model=DeleteFeedbackResponse)
+def delete_feedback(post: DeleteFeedback, db: Session = Depends(get_db)):
+    delete_status = feedback_delete(db=db, post=post)
     if delete_status.detail == "Doesnt Exist":
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Feedback Not Found"
