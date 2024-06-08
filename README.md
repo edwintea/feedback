@@ -57,7 +57,7 @@ npm install
 == running application==
 npm run dev
 #open in browser :
-
+http://localhost:5173/
 
 
 == run via docker =========
