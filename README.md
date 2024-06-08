@@ -1,4 +1,8 @@
----
+##DEVELOPER: EDWIN WARMING GUNAWAN
+##EMAIL : kubilk56@gmail.com
+##PHONE:+62 85710583303
+##COUNTRY : INDONESIA
+
 ## About
 with FastAPI.
 It uses SQLAlchemy as the ORM. 
@@ -25,10 +29,10 @@ It uses SQLAlchemy as the ORM.
 
 ## Running
 
-- Clone the repo using https://github.com/edwintea/feedback.git
+- Clone the repo using 
 
 ```bash
-git clone 
+git clone https://github.com/edwintea/feedback.git
 ```
 
 - Install dependencies
@@ -43,28 +47,36 @@ pip install -r requirements.txt
 | ----------- | ----------- |
 | DATABASE_URL   | postgresql://postgres:sa@host:port/db|
 
-- To run the project
+- To run the backend
 
 ```bash
 python -m uvicorn main:app --reload
 ```
 
-============= FRONT END WITH VUEJS==========================
+=============================== FRONTEND ==================================
 #requirements:
 node v20.11.1
 vue 2.7.16
 
-====run command ========
-cd feedback
-npm install
+=============================== step frontend ==================================
+- go to frontend folder
+- run command:
+    npm install
 
-== running application==
-npm run dev
-#open in browser :
-http://localhost:5173/
+=============================== RUNNING APPLICATION =======================
+- run command:
+    npm run dev
+- open in browser: 
+    http://localhost:5173/
+- do click the star for feedback and check the table feedback 
+
+=============================== RUNNING TEST APPLICATION =======================
+- go to test folder
+- run command : 
+    python -m pytest test_feedback.py
 
 
-== run via docker =========
+=============================== RUNNING APPLICATION VIA DOCKER =======================
 docker build -t feedback ./
 
 
