@@ -21,7 +21,7 @@ It uses SQLAlchemy as the ORM.
 
 ## Running
 
-- Clone the repo using
+- Clone the repo using https://github.com/edwintea/feedback.git
 
 ```bash
 git clone 
