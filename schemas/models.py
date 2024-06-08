@@ -12,6 +12,15 @@ class HealthResponse(BaseModel):
 
 
 class Feedback(BaseModel):
+    id:int
+    email:str
+    rating: int
+
+    class Config:
+        orm_mode=True
+        #from_attributes = True
+
+class CreateFeedback(BaseModel):
     email:str
     rating: int
 

@@ -3,10 +3,10 @@ from uuid import UUID
 from sqlalchemy.orm import Session
 
 from database.models import Feedbacks
-from schemas.models import DeleteFeedbackResponse, Feedback, UpdateFeedback,DeleteFeedback
+from schemas.models import DeleteFeedbackResponse, Feedback, CreateFeedback,UpdateFeedback,DeleteFeedback
 
 
-def feedback_create(db: Session, post: Feedback):
+def feedback_create(db: Session, post: CreateFeedback):
     db_post = Feedbacks(email=post.email,rating=post.rating)
     db.add(db_post)
     db.commit()

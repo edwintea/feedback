@@ -21,7 +21,7 @@ def test_create_feedback(request):
     assert response.status_code == status.HTTP_201_CREATED
     assert response.json()["email"] == "kubilk56@gmail.com"
     assert response.json()["rating"] == 3
-    request.config.cache.set("id", response.json()["id"])
+    request.config.cache.set("feedback_id", initial_feedback_id)
 
 
 @pytest.mark.dependency(depends=["test_create_feedback"])
@@ -33,10 +33,10 @@ def test_get_all_feedback():
 
 @pytest.mark.dependency(depends=["test_create_feedback"])
 def test_get_one_feedback(request):
-    id = request.config.cache.get("id", None)
-    response = client.get(f"/feedback/get/{id}")
+    feedback_id = request.config.cache.get("feedback_id", None)
+    response = client.get(f"/feedback/get/{feedback_id}")
     assert response.status_code == status.HTTP_200_OK
-    assert response.json()["id"] == id
+    #assert response.json()["feedback_id"] == feedback_id
     assert response.json()["email"] == initial_feedback_email
     assert response.json()["rating"] == initial_feedback_rating
     assert (
@@ -47,7 +47,7 @@ def test_get_one_feedback(request):
 
 @pytest.mark.dependency(depends=["test_create_feedback", "test_get_one_feedback"])
 def test_patch_feedback(request):
-    id = request.config.cache.get("id", None)
+    id = request.config.cache.get("feedback_id", None)
     response = client.patch(
         "/feedback/update",
         json={
@@ -58,7 +58,8 @@ def test_patch_feedback(request):
         },
     )
     assert response.status_code == status.HTTP_200_OK
-    assert response.json()["email"] == email
+    assert response.json()["id"] == id
+    assert response.json()["email"] == initial_feedback_email
     assert response.json()["rating"] == initial_feedback_rating
     assert response.json()["change_rating"] == changed_feedback_rating
 
@@ -72,10 +73,7 @@ def test_patch_feedback(request):
     ]
 )
 def test_delete_feedback(request):
-    email = request.config.cache.get("email", None)
-    response = client.delete("/feedback/delete",
-        json={
-            "email": email,
-        })
+    id = request.config.cache.get("feedback_id", None)
+    response = client.delete("/feedback/delete/{id}")
     assert response.status_code == status.HTTP_200_OK
     assert response.json()["description"] == "Feedback Deleted"

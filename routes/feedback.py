@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from database.connection import get_db
-from schemas.models import DeleteFeedbackResponse, Feedback, UpdateFeedback,DeleteFeedback
+from schemas.models import DeleteFeedbackResponse, Feedback,CreateFeedback, UpdateFeedback,DeleteFeedback
 from utils.feedback_crud import (
     feedback_create,
     feedback_delete,
@@ -17,7 +17,7 @@ router = APIRouter(tags=["feedback"])
 
 
 @router.post("/create", status_code=status.HTTP_201_CREATED, response_model=Feedback)
-def create_feedback(post: Feedback, db: Session = Depends(get_db)):
+def create_feedback(post: CreateFeedback, db: Session = Depends(get_db)):
     return feedback_create(db=db, post=post)
 
 
