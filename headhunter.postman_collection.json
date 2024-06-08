@@ -62,7 +62,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\":1,\r\n    \"email\":\"kubilk56@gmail.com\",\r\n    \"rating\":30\r\n}",
+					"raw": "{\r\n    \"id\":1,\r\n    \"email\":\"kubilk56@gmail.com\",\r\n    \"rating\":15\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -89,14 +89,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\":1\r\n}",
+					"raw": "{\r\n    \"email\":\"kubilk561@gmail.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://127.0.0.1:8000/feedback/delete/5"
+				"url": "http://127.0.0.1:8000/feedback/delete"
 			},
 			"response": []
 		}
