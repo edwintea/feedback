@@ -6,6 +6,7 @@ from main import app
 
 client = TestClient(app)
 
+initial_feedback_id=1
 initial_feedback_email = "kubilk56@gmail.com"
 initial_feedback_rating = 3
 changed_feedback_rating = 5
@@ -14,13 +15,13 @@ changed_feedback_rating = 5
 @pytest.mark.dependency()
 def test_create_feedback(request):
     response = client.post(
-        "/feeadback/create",
+        "/feedback/create",
         json={"email": initial_feedback_email, "rating": initial_feedback_rating},
     )
     assert response.status_code == status.HTTP_201_CREATED
     assert response.json()["email"] == "kubilk56@gmail.com"
     assert response.json()["rating"] == 3
-    request.config.cache.set("email", response.json()["email"])
+    request.config.cache.set("id", response.json()["id"])
 
 
 @pytest.mark.dependency(depends=["test_create_feedback"])
@@ -32,24 +33,26 @@ def test_get_all_feedback():
 
 @pytest.mark.dependency(depends=["test_create_feedback"])
 def test_get_one_feedback(request):
-    email = request.config.cache.get("email", None)
+    id = request.config.cache.get("id", None)
     response = client.get(f"/feedback/get/{id}")
     assert response.status_code == status.HTTP_200_OK
-    assert response.json()["email"] == email
+    assert response.json()["id"] == id
+    assert response.json()["email"] == initial_feedback_email
     assert response.json()["rating"] == initial_feedback_rating
     assert (
-        response.json()["description"] == initial_feedback_rating
+        response.json()["change_rating"] == initial_feedback_rating
         or changed_feedback_rating
     )
 
 
 @pytest.mark.dependency(depends=["test_create_feedback", "test_get_one_feedback"])
 def test_patch_feedback(request):
-    email = request.config.cache.get("email", None)
+    id = request.config.cache.get("id", None)
     response = client.patch(
         "/feedback/update",
         json={
-            "email": email,
+            "id":id,
+            "email": initial_feedback_email,
             "rating": initial_feedback_rating,
             "change_rating": changed_feedback_rating,
         },

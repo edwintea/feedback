@@ -28,8 +28,15 @@ def get_all_feedback(db: Session = Depends(get_db)):
 
 @router.get("/get/{id}", status_code=status.HTTP_200_OK, response_model=Feedback)
 def get_one_feedback(id, db: Session = Depends(get_db)):
-    return feedback_get_one(db=db, id=id)
+    try:
+        return feedback_get_one(db=db, id=id)    
+    except:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Feedback Not Found"
+        )
 
+
+    
 
 @router.delete("/delete", status_code=status.HTTP_200_OK, response_model=DeleteFeedbackResponse)
 def delete_feedback(post: DeleteFeedback, db: Session = Depends(get_db)):

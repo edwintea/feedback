@@ -32,6 +32,7 @@ class DeleteFeedback(BaseModel):
 
 
 class UpdateFeedback(BaseModel):
+    id:int
     email:str
     rating: int
 

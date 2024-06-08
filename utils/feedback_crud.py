@@ -24,9 +24,9 @@ def feedback_get_one(db: Session, id: UUID):
 
 def feedback_update(db: Session, post: UpdateFeedback):
     update_query = {Feedbacks.email: post.email,Feedbacks.rating : post.rating}
-    db.query(Feedbacks).filter_by(email=post.email).update(update_query)
+    db.query(Feedbacks).filter_by(id=post.id).update(update_query)
     db.commit()
-    return db.query(Feedbacks).filter_by(email=post.email).one()
+    return db.query(Feedbacks).filter_by(id=post.id).one()
 
 
 def feedback_delete(db: Session, post: DeleteFeedback):
