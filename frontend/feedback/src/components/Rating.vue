@@ -35,7 +35,10 @@ export default{
       const requestOptions = {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: "kubilk56@gmail.com",rating:this.rating })
+        /*
+        THIS IS THE SAMPLE DATA , JUST TO SHOW IS WORKING
+        */
+        body: JSON.stringify({ id: 1,email: "kubilk56@gmail.com",rating:this.rating })
       };
 
       //request to api
