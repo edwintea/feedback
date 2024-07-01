@@ -17,8 +17,8 @@ class Feedback(BaseModel):
     rating: int
 
     class Config:
-        orm_mode=True
-        #from_attributes = True
+        #orm_mode=True
+        from_attributes = True
 
 class CreateFeedback(BaseModel):
     email:str

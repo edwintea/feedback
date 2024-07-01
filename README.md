@@ -19,7 +19,7 @@ It uses SQLAlchemy as the ORM.
 
 ## Dependencies
 
-- Python 3.7+
+- Python 3.7.0
 - Pip
 - PostgreSQL :
     database : postgres
@@ -51,6 +51,7 @@ pip install -r requirements.txt
 
 ```bash
 python -m uvicorn main:app --reload
+
 ```
 
 =============================== FRONTEND ==================================
@@ -60,6 +61,7 @@ vue 2.7.16
 
 =============================== step frontend ==================================
 - go to frontend folder
+    cd /frontend/feedback
 - run command:
     npm install
 
@@ -73,6 +75,7 @@ vue 2.7.16
 =============================== RUNNING TEST APPLICATION =======================
 - go to test folder
 - run command : 
+    pip install pytest
     python -m pytest test_feedback.py
 
 
